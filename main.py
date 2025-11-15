@@ -9,9 +9,44 @@ def checkvalid(p):
     while not p.isdigit() or not (0 < int(p) <= 9):
         p = input("Ivalid input. (1-9): ")
     return int(p) - 1
-    
-    
 
+def win():
+    # Checks Rows for a Win
+    if grid[0][0] == grid[0][1] == grid[0][2] != " ":
+        print(f"Congratulations {grid[0][0].upper()} WINS!!")
+        return False
+    elif grid[1][0] == grid[1][1] == grid[2][2] != " ":
+        print(f"Congratulations {grid[0][0].upper()} WINS!!")
+        return False
+    elif grid[2][0] == grid[2][1] == grid[2][2] != " ":
+        print(f"Congratulations {grid[0][0].upper()} WINS!!")
+        return False
+    
+    # Checks Columns for a Win
+    elif grid[0][0] == grid[1][0] == grid[2][0] != " ":
+        print(f"Congratulations {grid[0][0].upper()} WINS!!")
+        return False
+    elif grid[0][1] == grid[1][1] == grid[2][1] != " ":
+        print(f"Congratulations {grid[0][0].upper()} WINS!!")
+        return False
+    elif grid[0][2] == grid[1][2] == grid[2][2] != " ":
+        print(f"Congratulations {grid[0][0].upper()} WINS!!")
+        return False
+    
+    # Checks Diagonals for a Win
+    elif grid[0][0] == grid[1][1] == grid[2][2] != " ":
+        print(f"Congratulations {grid[0][0].upper()} WINS!!")
+        return False
+    elif grid[2][0] == grid[1][1] == grid[0][2] != " ":
+        print(f"Congratulations {grid[0][0].upper()} WINS!!")
+        return False
+    
+    # If nobody wins game continues to run
+    else:
+        return True
+    
+running = True
+    
 grid = [
     [" ", " ", " "],
     [" ", " ", " "],
@@ -22,7 +57,7 @@ turn = "x"
 
 printgrid()
 
-for i in range(9):
+while running:
     
     placement = input("Where would you like to go? (1-9): ")
     placement = checkvalid(placement)
@@ -37,7 +72,6 @@ for i in range(9):
     else:
         while ogplace == placement:
             placement = input("This spot is already taken. Choose a new spot: ")
-            checkvalid(placement)
             placement = checkvalid(placement)
         
         row = placement // 3
@@ -52,3 +86,7 @@ for i in range(9):
         turn = "x"
         
     printgrid()
+    
+    running = win()
+    
+print("Over")
