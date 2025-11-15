@@ -15,11 +15,11 @@ def win():
     if grid[0][0] == grid[0][1] == grid[0][2] != " ":
         print(f"Congratulations {grid[0][0].upper()} WINS!!")
         return False
-    elif grid[1][0] == grid[1][1] == grid[2][2] != " ":
-        print(f"Congratulations {grid[0][0].upper()} WINS!!")
+    elif grid[1][0] == grid[1][1] == grid[1][2] != " ":
+        print(f"Congratulations {grid[1][0].upper()} WINS!!")
         return False
     elif grid[2][0] == grid[2][1] == grid[2][2] != " ":
-        print(f"Congratulations {grid[0][0].upper()} WINS!!")
+        print(f"Congratulations {grid[2][0].upper()} WINS!!")
         return False
     
     # Checks Columns for a Win
@@ -43,7 +43,12 @@ def win():
     
     # If nobody wins game continues to run
     else:
-        return True
+        if any(" " in row for row in grid):
+            return True
+        else:
+            print("Game is tied nobody wins....")
+            return False
+                
     
 running = True
     
