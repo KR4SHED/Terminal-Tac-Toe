@@ -38,7 +38,7 @@ def win():
         print(f"Congratulations {grid[0][0].upper()} WINS!!")
         return False
     elif grid[2][0] == grid[1][1] == grid[0][2] != " ":
-        print(f"Congratulations {grid[0][0].upper()} WINS!!")
+        print(f"Congratulations {grid[0][2].upper()} WINS!!")
         return False
     
     # If nobody wins game continues to run
@@ -89,4 +89,3 @@ while running:
     
     running = win()
     
-print("Over")
